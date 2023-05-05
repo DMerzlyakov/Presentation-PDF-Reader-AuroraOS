@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=ru.auroraos.PresentaionReaderPDF
+Exec=/usr/bin/ru.auroraos.PresentaionReaderPDF
+Name=Presentation Reader PDF
+Name[ru]=Чтение презентаций в PDF
+
+[X-Application]
+Permissions=Documents
+OrganizationName=ru.auroraos
+ApplicationName=PresentaionReaderPDF
+ExecDBus=/usr/bin/ru.auroraos.PresentaionReaderPDF
