@@ -9,12 +9,4 @@
         <translation>Presentation Reader PDF</translation>
     </message>
 </context>
-<context>
-    <name>MainPage</name>
-    <message>
-        <location filename="../qml/pages/MainPage.qml" line="47"/>
-        <source>Presentation Reader PDF</source>
-        <translation>Presentation Reader PDF</translation>
-    </message>
-</context>
 </TS>

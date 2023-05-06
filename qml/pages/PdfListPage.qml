@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import Qt.labs.folderlistmodel 2.1
-import QtQml.Models 2.2
+
 
 
 // Страница просмотра списка pdf-файлов
@@ -66,7 +66,10 @@ Page {
     function navigateToPdfViewerPage(filePath, fileName) {
         console.log(documentsDirectory)
         var pdfViewerPage = Qt.resolvedUrl("PdfViewerPage.qml")
-        pageStack.push(pdfViewerPage, { filePath: filePath, fileName: fileName })
+        pageStack.push(pdfViewerPage, {
+                           filePath: filePath,
+                           fileName: fileName
+                       })
     }
 
     // Модель для получения списка pdf-файлов
@@ -74,7 +77,8 @@ Page {
         id: folderModel
 
         folder: documentsDirectory
-        nameFilters: ["*[e]*.pdf"] // выбираем только файлы с расширением pdf
+        // выбираем только файлы с расширением pdf
+        nameFilters: ["*.pdf"]
     }
 
     TextField {

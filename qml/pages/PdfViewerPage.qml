@@ -8,9 +8,14 @@ import ru.omp.amberpdf 1.0
 Page {
 
     objectName: "pdfPage"
+    id: root
 
     property string filePath
     property string fileName
+
+
+    readonly property var pdfStatesNames: ["default", "loadingfullscreen"]
+    state: pdfStatesNames[0]
 
     // Title страницы
     Text {
@@ -32,6 +37,22 @@ Page {
         horizontalAlignment: Text.AlignHCenter
     }
 
+    // Переход в полноэкранный режим отображения pdf
+    function toFullSceen(){
+        pdfPagesView.anchors.bottom = root.bottom
+        pdfPagesView.anchors.top = root.top
+        pdfPagesView.anchors.bottomMargin = 0
+        pdfPagesView.anchors.topMargin = 0
+
+        pdfPagesView.border.width = 0
+
+        pdfPagesView.width = root.width
+
+        titleView.visible = false
+        btnBack.visible = false
+        changeScreenType.visible = false
+
+    }
 
     // Создание элемента PdfView для отображения PDF контента
     Rectangle{
@@ -81,10 +102,38 @@ Page {
         icon{
             source: Qt.resolvedUrl("../icons/up_icon.svg")
             color: "#146C94"
-            sourceSize { width: btnBack.width; height: btnBack.height }
+            sourceSize {
+                width: btnBack.width;
+                height: btnBack.height }
         }
 
-        onClicked: {pdfView.goToPage(1)
+        onClicked: {
+            pdfView.goToPage(1)
+        }
+    }
+
+    IconButton{
+        id: changeScreenType
+        width: 150
+        height: 150
+
+        anchors{
+            bottom: pdfPagesView.bottom
+            left: pdfPagesView.left
+            margins: 30
+        }
+
+        icon{
+            source: Qt.resolvedUrl("../icons/share_icon.svg")
+            color: "#146C94"
+            sourceSize {
+                width: changeScreenType.width;
+                height: changeScreenType.height
+            }
+        }
+
+        onClicked: {
+            toFullSceen()
         }
     }
 
@@ -94,11 +143,4 @@ Page {
         id: pdfiumProvider
         path: filePath
     }
-
-    // Обработчик события открытия детальной информации о файле
-    function openDetails() {
-        console.log("Open details for file");
-    }
-
-
 }
