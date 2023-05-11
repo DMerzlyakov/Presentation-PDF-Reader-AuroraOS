@@ -51,7 +51,6 @@ SOURCES += \
 HEADERS += \
 
 DISTFILES += \
-    ../Downloads/pdf_image (1).png \
     rpm/ru.auroraos.PresentaionReaderPDF.spec \
     AUTHORS.md \
     CODE_OF_CONDUCT.md \
